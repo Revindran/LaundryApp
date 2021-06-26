@@ -1,4 +1,4 @@
-# laundryapp
+# Laundry App
 
 A new Flutter project.
 
