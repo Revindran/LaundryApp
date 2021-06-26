@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:laundryapp/constants/app_theme.dart';
 import 'package:laundryapp/view/home/home_screen.dart';
+import 'package:laundryapp/view/porfile/profile_screen.dart';
+
+import 'order/order_screen.dart';
 
 class BottomBarHome extends StatefulWidget {
   @override
@@ -15,8 +17,8 @@ class _BottomBarHomeState extends State<BottomBarHome> {
   Widget build(BuildContext context) {
     final List<Widget> _widgetOptions = [
       HomeScreen(),
-      HomeScreen(),
-      HomeScreen(),
+      OrdersScreen(),
+      ProfileScreen(),
     ];
 
     void _onItemTapped(int index) {
@@ -33,21 +35,23 @@ class _BottomBarHomeState extends State<BottomBarHome> {
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(30.0),
-            topRight: Radius.circular(30.0),
+            topLeft: Radius.circular(10.0),
+            topRight: Radius.circular(10.0),
           ),
           child: BottomNavigationBar(
             items: [
               BottomNavigationBarItem(label: 'Home', icon: Icon(Icons.home)),
-              BottomNavigationBarItem(label: 'Orders', icon: Icon(Icons.home)),
-              BottomNavigationBarItem(label: 'Profile', icon: Icon(Icons.home)),
+              BottomNavigationBarItem(
+                  label: 'Orders', icon: Icon(Icons.shopping_basket_outlined)),
+              BottomNavigationBarItem(
+                  label: 'Profile', icon: Icon(Icons.person)),
             ],
             currentIndex: _selectedIndex,
             onTap: _onItemTapped,
             type: BottomNavigationBarType.fixed,
-            selectedItemColor: Colors.blue,
-            unselectedItemColor: Colors.white,
-            backgroundColor: AppThemes.Primarycolor,
+            selectedItemColor: Colors.amber,
+            unselectedItemColor: Colors.grey[400],
+            backgroundColor: Colors.white,
           ),
         ),
       ),

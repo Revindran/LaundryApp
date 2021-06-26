@@ -2,9 +2,10 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:laundryapp/view/home/home_screen.dart';
 import 'package:lottie/lottie.dart';
 import 'package:simple_animations/simple_animations.dart';
+
+import '../../bottom_bar.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -106,7 +107,7 @@ class LoginPage extends StatelessWidget {
                           minWidth: double.infinity,
                           height: 60,
                           onPressed: () {
-                            Get.to(HomeScreen());
+                            Get.to(BottomBarHome());
                           },
                           color: Colors.blueGrey,
                           elevation: 0,

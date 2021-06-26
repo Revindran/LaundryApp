@@ -18,57 +18,51 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 5), () {
+    Timer(Duration(seconds: 6), () {
       Get.off(() => LoginPage());
     });
   }
 
-  @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Scaffold(
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Align(
-              alignment: Alignment.topCenter,
-              child: Padding(
-                padding: EdgeInsets.only(top: 200),
-                child: Lottie.asset(
-                  'assets/laundry_animation.json',
+    return Scaffold(
+      body: Stack(
+        children: [
+          Lottie.asset(
+            'assets/laundry_animation.json',
+          ),
+          Align(
+            alignment: Alignment.center,
+            child: Container(
+              height: 100,
+              child: DefaultTextStyle(
+                style: TextStyle(
+                    color: Colors.grey[500],
+                    fontSize: 30.0,
+                    fontWeight: FontWeight.bold,
+                    fontStyle: FontStyle.italic),
+                child: AnimatedTextKit(
+                  animatedTexts: [
+                    FadeAnimatedText('Laundry'),
+                    FadeAnimatedText('Laundry App'),
+                  ],
                 ),
               ),
             ),
-            DefaultTextStyle(
-              style: TextStyle(
-                  color: Colors.grey[500],
-                  fontSize: 30.0,
-                  fontWeight: FontWeight.bold,
-                  fontStyle: FontStyle.italic),
-              child: AnimatedTextKit(
-                animatedTexts: [
-                  FadeAnimatedText('Laundry'),
-                  FadeAnimatedText('Laundry App'),
-                ],
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: TextLiquidFill(
+              boxWidth: Get.width,
+              text: 'Laundry',
+              waveColor: Colors.blueAccent,
+              boxBackgroundColor: Colors.transparent,
+              textStyle: TextStyle(
+                fontSize: 80.0,
+                fontWeight: FontWeight.bold,
               ),
             ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: TextLiquidFill(
-                boxWidth: Get.width,
-                text: 'Laundry',
-                waveColor: Colors.blueAccent,
-                boxBackgroundColor: Colors.transparent,
-                textStyle: TextStyle(
-                  fontSize: 80.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            )
-          ],
-        ),
+          )
+        ],
       ),
     );
   }
