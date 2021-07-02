@@ -1,13 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'components/ui_components.dart';
 import 'login_ui.dart';
 
-class ResetPasswordUi extends StatelessWidget {
-  ResetPasswordUi({Key? key}) : super(key: key);
+class RegisterUi extends StatelessWidget {
+  RegisterUi({Key? key}) : super(key: key);
 
-  final TextEditingController _mailController = TextEditingController();
-  final TextEditingController _passController = TextEditingController();
+  TextEditingController _mailController = TextEditingController();
+  TextEditingController _passController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -30,27 +31,51 @@ class ResetPasswordUi extends StatelessWidget {
           SizedBox(
             height: 40,
           ),
-          Column(
-            children: [
-              FadeAnimation(
-                1.3,
-                customFormField(
-                  controller: _mailController,
-                  icon: Icon(Icons.security),
-                  labelText: "Email",
-                  validator: "email",
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                FadeAnimation(
+                  1.2,
+                  // makeInput(label: "Email", icon: Icon(Icons.person)),
+                  customFormField(
+                      controller: _mailController,
+                      icon: Icon(Icons.mail),
+                      labelText: "Name",
+                      validator: "name"),
                 ),
-              ),
-              FadeAnimation(
-                1.3,
-                customFormField(
+                FadeAnimation(
+                  1.2,
+                  // makeInput(label: "Email", icon: Icon(Icons.person)),
+                  customFormField(
+                      controller: _mailController,
+                      icon: Icon(Icons.mail),
+                      labelText: "Last Name",
+                      validator: "name"),
+                ),
+                FadeAnimation(
+                  1.3,
+                  customFormField(
                     controller: _passController,
                     icon: Icon(Icons.security),
-                    labelText: "Password",
-                    validator: "pass",
-                    obscureText: true),
-              ),
-            ],
+                    labelText: "Email",
+                    validator: "email",
+                  ),
+                ),
+                FadeAnimation(
+                  1.3,
+                  customFormField(
+                      controller: _passController,
+                      icon: Icon(Icons.security),
+                      labelText: "Password",
+                      validator: "pass",
+                      obscureText: true),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 18,
           ),
           FadeAnimation(
             1.4,
@@ -75,12 +100,15 @@ class ResetPasswordUi extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50)),
                   child: Text(
-                    "Reset",
+                    "Register",
                     style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
                   ),
                 ),
               ),
             ),
+          ),
+          SizedBox(
+            height: 40,
           ),
         ],
       ),
