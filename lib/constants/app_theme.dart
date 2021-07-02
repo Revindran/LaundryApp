@@ -62,7 +62,7 @@ class AppThemes {
   Color.fromRGBO(186, 215, 97, 1);
 
   //Text Colors
-  static const Color _darkTextColor = Colors.black;
+  static const Color _darkTextColor = Colors.white;
 
   static const Color _darkAlertTextColor = Colors.black;
   static const Color _darkTextSecondaryColor = Colors.black;

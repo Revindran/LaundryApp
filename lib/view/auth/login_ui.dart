@@ -2,6 +2,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:laundryapp/constants/app_theme.dart';
 import 'package:laundryapp/view/auth/registration_ui.dart';
 import 'package:lottie/lottie.dart';
 import 'package:simple_animations/simple_animations.dart';
@@ -64,7 +65,7 @@ class LoginPage extends StatelessWidget {
                         // makeInput(label: "Email", icon: Icon(Icons.person)),
                         customFormField(
                             controller: _mailController,
-                            icon: Icon(Icons.mail),
+                            icon: Icon(Icons.mail,color: AppThemes.Primarycolor,),
                             labelText: "Email",
                             validator: "email"),
                       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:laundryapp/constants/app_theme.dart';
 import 'package:laundryapp/constants/validator.dart';
 
 Widget customFormField(
@@ -28,18 +29,18 @@ Widget customFormField(
       onChanged: (value) => null,
       validator: Validator().validateName,
       onSaved: (value) => controller.text = value!,
-      cursorColor: Colors.white,
+      cursorColor: AppThemes.Primarycolor,
       decoration: InputDecoration(
         prefixIcon: icon,
         labelText: labelText,
-        labelStyle: TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: AppThemes.Primarycolor),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(30),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(30.0),
           borderSide: BorderSide(
-            color: Colors.white,
+            color: AppThemes.Primarycolor,
             width: 2.0,
           ),
         ),

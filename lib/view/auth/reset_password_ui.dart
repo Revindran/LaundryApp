@@ -23,7 +23,7 @@ class ResetPasswordUi extends StatelessWidget {
           FadeAnimation(
             1,
             Text(
-              "Register",
+              "Reset Password",
               style: TextStyle(fontSize: 40, fontWeight: FontWeight.w600),
             ),
           ),
