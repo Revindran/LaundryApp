@@ -2,7 +2,6 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:laundryapp/constants/app_theme.dart';
 import 'package:laundryapp/view/auth/registration_ui.dart';
 import 'package:lottie/lottie.dart';
 import 'package:simple_animations/simple_animations.dart';
@@ -12,8 +11,8 @@ import 'components/ui_components.dart';
 import 'reset_password_ui.dart';
 
 class LoginPage extends StatelessWidget {
-  TextEditingController _mailController = TextEditingController();
-  TextEditingController _passController = TextEditingController();
+  final TextEditingController _mailController = TextEditingController();
+  final TextEditingController _passController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -63,20 +62,14 @@ class LoginPage extends StatelessWidget {
                       FadeAnimation(
                         1.2,
                         // makeInput(label: "Email", icon: Icon(Icons.person)),
-                        customFormField(
-                            controller: _mailController,
-                            icon: Icon(Icons.mail,color: AppThemes.Primarycolor,),
-                            labelText: "Email",
-                            validator: "email"),
+                        customEmailField(_mailController),
+                      ),
+                      SizedBox(
+                        height: 20,
                       ),
                       FadeAnimation(
                         1.3,
-                        customFormField(
-                            controller: _passController,
-                            icon: Icon(Icons.security),
-                            labelText: "Password",
-                            validator: "pass",
-                            obscureText: true),
+                        customPasswordFormField(_passController),
                       ),
                       SizedBox(
                         height: 18,
@@ -84,7 +77,7 @@ class LoginPage extends StatelessWidget {
                       FadeAnimation(
                         1.5,
                         InkWell(
-                          onTap: () => Get.to(()=>ResetPasswordUi()),
+                          onTap: () => Get.to(() => ResetPasswordUi()),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
@@ -123,11 +116,6 @@ class LoginPage extends StatelessWidget {
                         height: 60,
                         onPressed: () {
                           Get.to(BottomBarHome());
-                          /*if (_formKey.currentState!.validate()) {
-                            SystemChannels.textInput
-                                .invokeMethod('TextInput.hide');
-                            Get.to(BottomBarHome());
-                          }*/
                         },
                         color: Colors.blueGrey,
                         elevation: 0,
@@ -200,8 +188,6 @@ class LoginPage extends StatelessWidget {
   }
 
   Widget makeInput({label, obscureText = false, icon}) {
-    var make = "";
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[

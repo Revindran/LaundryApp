@@ -1,6 +1,5 @@
- class Validator {
+class Validator {
   Validator();
-
 
   String? validateEmail(String? value) {
     String pattern = r'^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+';
@@ -13,10 +12,10 @@
 
   String? validatePassword(String? value) {
     if (value!.isEmpty) {
-      return 'Please enter your Password';
+      return 'Please enter your id';
     }
     if (value.length < 6) {
-      return 'Password should more then 6 chars';
+      return 'Id should atleast 3 chars';
     } else
       return null;
   }
@@ -30,5 +29,4 @@
     } else
       return null;
   }
-
 }

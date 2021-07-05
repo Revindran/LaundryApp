@@ -7,8 +7,10 @@ import 'login_ui.dart';
 class RegisterUi extends StatelessWidget {
   RegisterUi({Key? key}) : super(key: key);
 
-  TextEditingController _mailController = TextEditingController();
-  TextEditingController _passController = TextEditingController();
+  final TextEditingController _mailController = TextEditingController();
+  final TextEditingController _passController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _idController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -37,40 +39,30 @@ class RegisterUi extends StatelessWidget {
               child: Column(
                 children: [
                   FadeAnimation(
-                    1.2,
-                    // makeInput(label: "Email", icon: Icon(Icons.person)),
-                    customFormField(
-                        controller: _mailController,
-                        icon: Icon(Icons.mail),
-                        labelText: "Name",
-                        validator: "name"),
+                      1.2,
+                      // makeInput(label: "Email", icon: Icon(Icons.person)),
+                      customNameFormField(_nameController)),
+                  SizedBox(
+                    height: 10,
                   ),
                   FadeAnimation(
                     1.2,
                     // makeInput(label: "Email", icon: Icon(Icons.person)),
-                    customFormField(
-                        controller: _mailController,
-                        icon: Icon(Icons.mail),
-                        labelText: "Last Name",
-                        validator: "name"),
+                    customEmailField(_mailController),
+                  ),
+                  SizedBox(
+                    height: 10,
                   ),
                   FadeAnimation(
                     1.3,
-                    customFormField(
-                      controller: _passController,
-                      icon: Icon(Icons.security),
-                      labelText: "Email",
-                      validator: "email",
-                    ),
+                    customPasswordFormField(_idController),
+                  ),
+                  SizedBox(
+                    height: 10,
                   ),
                   FadeAnimation(
                     1.3,
-                    customFormField(
-                        controller: _passController,
-                        icon: Icon(Icons.security),
-                        labelText: "Password",
-                        validator: "pass",
-                        obscureText: true),
+                    customPasswordFormField(_passController),
                   ),
                 ],
               ),
