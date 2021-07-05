@@ -4,9 +4,9 @@ import 'package:laundryapp/services/base_client.dart';
 import 'base_controller.dart';
 
 
-class TestController extends GetxController with BaseController {
+class ApiController extends GetxController with BaseController {
 
-  
+
   void getData() async {
     showLoading('Fetching data');
     var response = await BaseClient()
