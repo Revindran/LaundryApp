@@ -133,3 +133,39 @@ customButton(GlobalKey<FormState> formKey) {
     ),
   );
 }
+
+customFormField(TextEditingController controller, String labelText,
+    IconData icon, bool obscureText) {
+  return TextFormField(
+    obscureText: obscureText,
+    controller: controller,
+    onChanged: (value) => null,
+    cursorColor: Colors.grey,
+    onSaved: (value) => controller.text = value!,
+    decoration: InputDecoration(
+      prefixIcon: Icon(
+        icon,
+        color: Colors.grey,
+      ),
+      labelText: labelText,
+      labelStyle: TextStyle(color: Colors.grey),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(30),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(30.0),
+        borderSide: BorderSide(
+          color: Colors.grey,
+          width: 2.0,
+        ),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(30.0),
+        borderSide: BorderSide(
+          color: Colors.grey,
+          width: 2.0,
+        ),
+      ),
+    ),
+  );
+}

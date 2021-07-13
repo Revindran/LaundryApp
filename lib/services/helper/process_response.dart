@@ -18,6 +18,8 @@ dynamic processResponse(http.Response response) {
       throw BadRequestException(
           utf8.decode(response.bodyBytes), response.request!.url.toString());
     case 401:
+      throw UnAuthorizedException(
+          utf8.decode(response.bodyBytes), response.request!.url.toString());
     case 403:
       throw UnAuthorizedException(
           utf8.decode(response.bodyBytes), response.request!.url.toString());

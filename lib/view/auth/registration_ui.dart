@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:laundryapp/controllers/auth_controller.dart';
 
 import 'components/ui_components.dart';
 import 'login_ui.dart';
@@ -7,10 +9,14 @@ import 'login_ui.dart';
 class RegisterUi extends StatelessWidget {
   RegisterUi({Key? key}) : super(key: key);
 
+  final _controller = Get.put<AuthController>(AuthController());
+
   final TextEditingController _mailController = TextEditingController();
   final TextEditingController _passController = TextEditingController();
+  final TextEditingController _confirmPassController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _idController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -39,30 +45,41 @@ class RegisterUi extends StatelessWidget {
               child: Column(
                 children: [
                   FadeAnimation(
-                      1.2,
-                      // makeInput(label: "Email", icon: Icon(Icons.person)),
-                      customNameFormField(_nameController)),
+                    1.2,
+                    customFormField(_nameController, "Enter Your Name",
+                        Icons.person, false),
+                  ),
                   SizedBox(
                     height: 10,
                   ),
                   FadeAnimation(
                     1.2,
-                    // makeInput(label: "Email", icon: Icon(Icons.person)),
-                    customEmailField(_mailController),
+                    customFormField(
+                        _mailController, "Enter Your Email", Icons.mail, false),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  FadeAnimation(
+                    1.2,
+                    customFormField(_phoneController, "Enter Your Phone Number",
+                        Icons.phone, false),
                   ),
                   SizedBox(
                     height: 10,
                   ),
                   FadeAnimation(
                     1.3,
-                    customPasswordFormField(_idController),
+                    customFormField(_passController, "Enter Your Password",
+                        Icons.password, true),
                   ),
                   SizedBox(
                     height: 10,
                   ),
                   FadeAnimation(
                     1.3,
-                    customPasswordFormField(_passController),
+                    customFormField(_confirmPassController, "Confirm Password",
+                        Icons.password, true),
                   ),
                 ],
               ),
@@ -87,7 +104,14 @@ class RegisterUi extends StatelessWidget {
                   child: MaterialButton(
                     minWidth: double.infinity,
                     height: 60,
-                    onPressed: () {},
+                    onPressed: () {
+                      _controller.apiRegister(
+                          _mailController,
+                          _nameController,
+                          _passController,
+                          _confirmPassController,
+                          _phoneController);
+                    },
                     color: Colors.blueGrey,
                     elevation: 0,
                     shape: RoundedRectangleBorder(

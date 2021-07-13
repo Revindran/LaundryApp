@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:laundryapp/controllers/home_view_controller.dart';
+import 'package:laundryapp/view/porfile/profile_screen.dart';
 
 class LocationHeader extends StatelessWidget {
-  const LocationHeader({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,10 +27,14 @@ class LocationHeader extends StatelessWidget {
                     SizedBox(
                       width: 10,
                     ),
-                    Text(
-                      'Coimbatore, TN',
-                      style: TextStyle(color: Colors.grey[600], fontSize: 16),
-                    )
+                    GetBuilder<HomeViewController>(
+                      builder: (_c) => Text(
+                        _c.addressLine.value.isEmpty
+                            ? 'Loading....'
+                            : '${_c.addressLine.value}',
+                        style: TextStyle(color: Colors.grey[600], fontSize: 16),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -38,16 +42,19 @@ class LocationHeader extends StatelessWidget {
             SizedBox(
               width: 10,
             ),
-            Hero(
-              tag: 'tag',
-              child: Container(
-                width: 40.0,
-                height: 40.0,
-                decoration: new BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: new DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage('assets/user_pic.png'),
+            InkWell(
+              onTap: () => Get.to(ProfileScreen()),
+              child: Hero(
+                tag: 'tag',
+                child: Container(
+                  width: 40.0,
+                  height: 40.0,
+                  decoration: new BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: new DecorationImage(
+                      fit: BoxFit.cover,
+                      image: AssetImage('assets/user_pic.png'),
+                    ),
                   ),
                 ),
               ),

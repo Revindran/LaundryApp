@@ -2,11 +2,11 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:laundryapp/controllers/auth_controller.dart';
 import 'package:laundryapp/view/auth/registration_ui.dart';
 import 'package:lottie/lottie.dart';
 import 'package:simple_animations/simple_animations.dart';
 
-import '../bottom_bar.dart';
 import 'components/ui_components.dart';
 import 'reset_password_ui.dart';
 
@@ -14,6 +14,8 @@ class LoginPage extends StatelessWidget {
   final TextEditingController _mailController = TextEditingController();
   final TextEditingController _passController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  final _controller = Get.put(AuthController());
 
   @override
   Widget build(BuildContext context) {
@@ -115,7 +117,8 @@ class LoginPage extends StatelessWidget {
                         minWidth: double.infinity,
                         height: 60,
                         onPressed: () {
-                          Get.to(BottomBarHome());
+                          _controller.apiLogin(
+                              _mailController, _passController);
                         },
                         color: Colors.blueGrey,
                         elevation: 0,

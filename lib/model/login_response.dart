@@ -7,22 +7,26 @@ String loginResponseToJson(LoginResponse data) => json.encode(data.toJson());
 
 class LoginResponse {
   LoginResponse({
+    this.error,
     this.msg,
     this.data,
     this.success,
   });
 
+  String? error;
   String? msg;
   LoginData? data;
   bool? success;
 
   factory LoginResponse.fromJson(Map<String, dynamic> json) => LoginResponse(
+        error: json["error"],
         msg: json["msg"],
         data: LoginData.fromJson(json["data"]),
         success: json["success"],
       );
 
   Map<String, dynamic> toJson() => {
+        "error": error,
         "msg": msg,
         "data": data!.toJson(),
         "success": success,

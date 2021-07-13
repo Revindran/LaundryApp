@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:laundryapp/view/home/components/all_shops.dart';
-import 'package:laundryapp/view/home/components/location_bar.dart';
-import 'package:laundryapp/view/home/components/our_services.dart';
-import 'package:laundryapp/view/home/components/promotion_slider.dart';
 
+import 'components/all_shops.dart';
+import 'components/location_bar.dart';
+import 'components/our_services.dart';
 import 'components/popular_laundries.dart';
+import 'components/promotion_slider.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,6 +21,7 @@ class HomeScreen extends StatelessWidget {
             _vSizedBox(),
             _hText("Promotions"),
             PromotionSlider(),
+            _vSizedBox(),
             _vSizedBox(),
             _hText("Our Services"),
             ServiceHScroll(),

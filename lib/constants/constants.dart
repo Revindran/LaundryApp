@@ -1,0 +1,11 @@
+class Constants {
+  static const int TIME_OUT_DURATION = 20;
+  static const String baseUrl = "https://icarelaundry.com/public/api";
+  static const header = {
+    "Content-Type": "application/json",
+    "Authorization":
+        "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMDliYTE0MTc3NDZkOWVhN2NiNGIzNThkNWMyZmE5ZTY5YjY5MzJjNzEyZDY3ZThjNGU4NzMxNjk4MTczOTlhMzBmNWNmY2M0MmY5MDMxZTIiLCJpYXQiOjE2MjI1NTIzMjEsIm5iZiI6MTYyMjU1MjMyMSwiZXhwIjoxNjU0MDg4MzIwLCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.CVTds427mLJ2RDc_-hLccmLHHxlK6dAkzy8QQNo4HwCYNm64lNretIGMzPPUzuDMeoOUS46dkHMKIUWdaZVVQUKzmL-RtyeJg6ALNzq46efsH4go8t1cuCRA3m_Z2KWEekWIay6rAL2i7MBlQ_PsfG9-acC6gu08_82hjJN885UOFNh22GpFH1JiRzTDEW2-NW8SlyCCATycqn_pml7TISuLhIUgdA4_hOWgjL-zNusYBhfI2XTpC6OHEkjYzNep48cq9swi0GYvhqtMTJ_t5rl1s0oxNIZE_J0Yhui4BciPjmtFgkQdhhc8WWGTvzmaQBEOC9s2f3WKJd0cROtas2WnQgcvyTVyD4FyrBWmD9M5bl01dOwC3vR5PL89xO_-BFrX9vVeQj1vfX4MHYMKrHbF584lAr1c8hUfqhQYW0O_CwThhDmQCAGa2oQdaRpp3SvXvWzPiy_0JM5JLaqk8tjCFMtcUsMHaR4dYUHt8vZO7FSHPN6Sy8AGUfzR8b2n7moi4m3c_I5E5tnjHBodnoF0K-EFaadTAj7Gc_u9YvQS0IcgvGviQ0Dc6B8Lboa9DYgkfc-qWbkuk0Rc9_OsA8bOAyyEoYKHFgfwOc86-0R81m71PLXXfOH6Au959IvSv2p_0f1zA2_nmbta6tmMsuTYFtFmrBQv5U99ZmBHx-I"
+  };
+
+  static const imageUrl = "https://images.vexels.com/media/users/3/213440/isolated/preview/040949f1471f3cc09a1f96ecf442f529-shirt-on-hanger-by-vexels.png";
+}
