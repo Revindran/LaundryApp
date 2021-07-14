@@ -1,11 +1,13 @@
 import 'dart:convert';
 
+import 'base_response.dart';
+
 AllServices allServicesFromJson(String str) =>
     AllServices.fromJson(json.decode(str));
 
 String allServicesToJson(AllServices data) => json.encode(data.toJson());
 
-class AllServices {
+class AllServices extends BaseResponse {
   AllServices({
     this.msg,
     this.data,
@@ -18,7 +20,8 @@ class AllServices {
 
   factory AllServices.fromJson(Map<String, dynamic> json) => AllServices(
         msg: json["msg"],
-        data: List<ServicesListModel>.from(json["data"].map((x) => ServicesListModel.fromJson(x))),
+        data: List<ServicesListModel>.from(
+            json["data"].map((x) => ServicesListModel.fromJson(x))),
         success: json["success"],
       );
 
@@ -54,7 +57,8 @@ class ServicesListModel {
   String? imagePath;
   dynamic mainPrice;
 
-  factory ServicesListModel.fromJson(Map<String, dynamic> json) => ServicesListModel(
+  factory ServicesListModel.fromJson(Map<String, dynamic> json) =>
+      ServicesListModel(
         id: json["id"],
         name: json["name"],
         image: json["image"],

@@ -16,7 +16,9 @@ class PromotionSlider extends StatelessWidget {
         return Container(
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15), color: Colors.white),
-          child: offersList(offers),
+          child: Center(
+            child: offersList(offers),
+          ),
         );
       },
       options: CarouselOptions(

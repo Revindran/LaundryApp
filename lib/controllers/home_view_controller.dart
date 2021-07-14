@@ -9,6 +9,7 @@ import 'package:laundryapp/model/popular_shops.dart';
 import 'package:laundryapp/model/promotion.dart';
 import 'package:laundryapp/services/base_client.dart';
 import 'package:laundryapp/services/controller/base_controller.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class HomeViewController extends GetxController with BaseController {
   late final AllServices allServicesResponse;
@@ -45,8 +46,24 @@ class HomeViewController extends GetxController with BaseController {
 
   @override
   void onInit() {
-    getCurrentLocation();
+    getPermission();
     super.onInit();
+  }
+
+  Future getAllData() async {
+    getAllOffers();
+    getAllServices();
+    getAllShops();
+    getPopularShops();
+  }
+
+  getPermission() async {
+    var status = await Permission.location.status;
+    if (status.isGranted) {
+      getCurrentLocation();
+    } else {
+      await Permission.location.request().then((value) => getCurrentLocation());
+    }
   }
 
   void getCurrentLocation() async {
@@ -64,11 +81,11 @@ class HomeViewController extends GetxController with BaseController {
         '${placemarks[0].locality} | ${placemarks[0].subAdministrativeArea}.'
             .obs;
     print('Address: ${addressLine.value}');
-    getAllOffers();
+    getAllData();
     update();
   }
 
-  void getAllOffers() async {
+  Future getAllOffers() async {
     showLoading('Loading offers...');
     var response = await BaseClient().get('/offers').catchError(handleError);
     if (response != null) {
@@ -83,11 +100,10 @@ class HomeViewController extends GetxController with BaseController {
       Get.snackbar("Error", "Please Try Again!",
           snackPosition: SnackPosition.BOTTOM);
     }
-    getAllServices();
   }
 
   void getAllServices() async {
-    showLoading('Loading our services...');
+    showLoading('Loading Services...');
     var response = await BaseClient().get('/services').catchError(handleError);
     if (response != null) {
       hideLoading();
@@ -101,7 +117,6 @@ class HomeViewController extends GetxController with BaseController {
       Get.snackbar("Error", "Please Try Again!",
           snackPosition: SnackPosition.BOTTOM);
     }
-    getAllShops();
   }
 
   void getAllShops() async {
@@ -121,7 +136,6 @@ class HomeViewController extends GetxController with BaseController {
       Get.snackbar("Error", "Something went wrong!",
           snackPosition: SnackPosition.BOTTOM);
     }
-    getPopularShops();
   }
 
   void getPopularShops() async {
